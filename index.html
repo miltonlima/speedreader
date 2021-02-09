@@ -1,116 +1,92 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no">
-<title>ReadFast</title>
-	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>ReadFast</title>
 	<script>
-	
 		var i = 0;
 		var l = 0;
 		var a = 0;
 		var v = 500;
-	
-	
-	function VectorText(){
-		
-		//alert("oi");
-		
-		document.getElementById('btstart').innerHTML = "Reiniciar";
-		var arr = new Array();
-		//var string = "Um reator nuclear (AO 1945: reactor nuclear) é uma câmara de resfriamento ";
-		var string = document.getElementById("txtread").value;
-		arr = string.split(" ");
-		l = arr.length;
-		document.getElementById("div2").innerHTML = l;
-		if(i == arr.length){i = 0;return false;}
-		else{
-			document.getElementById("div1").innerHTML = arr[i];
-			i ++;
-			setTimeout(VectorText,v);
+		function VectorText() {
+
+			document.getElementById('btstart').innerHTML = "Reiniciar";
+			var arr = new Array();
+
+			var string = document.getElementById("txtread").value;
+			arr = string.split(" ");
+			l = arr.length;
+			document.getElementById("div2").innerHTML = l;
+			if (i == arr.length) { i = 0; return false; }
+			else {
+				document.getElementById("div1").innerHTML = arr[i];
+				i++;
+				setTimeout(VectorText, v);
+			}
 		}
-		
-		//alert(arr.length);
-		//for(i = 0 ; i < arr.length ; i++){
-		//alert(arr[i]);
-		//document.getElementById("div1").innerHTML += arr[i]+"<br>";
-		//sleep(2);
-		//			
-		//}
-		
-	}
-		
-	function RestartFunc(){
-		
-		i = 0;
-		//VectorText();
-		/* alert("teste");
-		return false;*/
-		
-	}
-		
-		function StopFunc(){
-			
+
+		function RestartFunc() {
+			i = 0;
+		}
+
+		function StopFunc() {
+
 			statusbutton = document.getElementById('btstop').innerHTML;
 			/*alert("teste");*/
-			if(statusbutton == 'Parar'){
+			if (statusbutton == 'Parar') {
 				a = i;
 				i = l;
 				document.getElementById('btstop').innerHTML = 'Continuar';
 			}
-			else{
-				if(a > 10){
+			else {
+				if (a > 10) {
 					i = a - 10;
-				}				
-				else{
+				}
+				else {
 					i = 0;
 				}
 				document.getElementById('btstop').innerHTML = 'Parar';
 				VectorText();
 			}
-			
-			
-			
 		}
-	
-	function FuncSpeed(){alert('teste');}
-	
+		function FuncSpeed() { alert('teste'); }
+
 	</script>
-	
+
 	<style>
-	
-		.default1{
-			/*border: 1px solid #000000;*/
+		.default1 {
 			text-align: center;
 			font-size: 3em;
 		}
-		
-		.default2{
-			
+
+		.default2 {
+
 			width: 90%;
-			
+
 		}
-		
-		..default3{
-			/*border: 1px solid #000000;*/
+
+		..default3 {
 			text-align: center;
 			font-size: 2em;
 		}
-	
 	</style>
 </head>
 
 <body>
-	
+
 	<textarea id="txtread" class="default2" cols="" rows="8" placeholder="Cole o texto aqui..."></textarea>
-	<p><div id="div1" class="default1"></div>
+	<p>
+	<div id="div1" class="default1"></div>
 	<div id="div2" class="default3"></div>
 	<button onClick="VectorText()" id="btstart">Iniciar</button>
-	<!-- <button onClick="RestartFunc()" id="btrestart">Reiniciar</button> -->
 	<button onClick="StopFunc()" id="btstop">Parar</button>
 	<button>Limpar</button></p>
-	<p><!-- teste 17/11/2018 -->Velocidade:&nbsp;<button id='btminus' onClick='FuncSpeed()'>-</button>&nbsp;<button id='btplus' onClick='FuncSpeed()'>+</button><!-- teste 17/11/2018 --></p>
-	
+	<p>
+		Velocidade:&nbsp;<button id='btminus' onClick='FuncSpeed()'>-</button>&nbsp;<button
+			id='btplus' onClick='FuncSpeed()'>+</button>
+	</p>
+
 </body>
+
 </html>
